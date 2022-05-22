@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/mmmmmmmm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textAlfabet"
+            android:layout_width="wrap_content"
+            android:layout_height="57dp"
+            android:fontFamily="@font/inter"
+            android:gravity="center_vertical"
+            android:paddingStart="26dp"
+            android:text="A"
+            android:textStyle="bold"
+            android:textColor="@color/blue_them"
+            android:textSize="18dp" />
+
+
+        <LinearLayout
+            android:id="@+id/linear_list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="19dp"
+            android:layout_marginBottom="3dp"
+            android:elevation="3dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="#6B6B6B">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/picContact"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="57dp" />
+
+
+                <TextView
+                    android:id="@+id/text_item1"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:fontFamily="@font/inter"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:text="hello world"
+                    android:textColor="#1B1A1F"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#cccccc"
+                android:visibility="gone" />
+
+
+            <include
+                android:id="@+id/box_cmi"
+                layout="@layout/box_cmi" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</layout>
