@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Contacts">
         <activity
-            android:name=".activity.CreateContact"
+            android:name=".activity.CreateContactActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"

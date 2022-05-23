@@ -189,7 +189,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun addContact(view: View) {
-        val intent = Intent(this,CreateContact::class.java)
+        val intent = Intent(this,CreateContactActivity::class.java)
         startActivity(intent)
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
