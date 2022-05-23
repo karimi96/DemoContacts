@@ -2,11 +2,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+<!--        <EditText-->
+<!--            android:id="@+id/eee"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:background="@color/blue_them"-->
+<!--            android:drawableLeft="@drawable/info_icon"-->
+<!--            android:layout_height="40dp"/>-->
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_bar"
@@ -19,46 +26,62 @@
             app:searchHintIcon="@null"
             app:searchIcon="@drawable/search_icon" />
 
-        <ImageView
-            android:id="@+id/icon_addPerson"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <RelativeLayout
+            android:id="@+id/addContact"
+            android:onClick="addContact"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
             android:layout_below="@id/search_bar"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="35dp"
-            android:src="@drawable/add_person" />
+            android:layout_marginTop="15dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true">
 
-        <TextView
-            android:id="@+id/textNewContact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/search_bar"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="35dp"
-            android:layout_toEndOf="@id/icon_addPerson"
-            android:fontFamily="@font/inter"
-            android:text="Create new contact"
-            android:textColor="@color/blue_them"
-            android:textSize="16dp" />
+            <ImageView
+                android:id="@+id/icon_addPerson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="35dp"
+                android:src="@drawable/add_person" />
+
+            <TextView
+                android:id="@+id/textNewContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="35dp"
+                android:layout_toEndOf="@id/icon_addPerson"
+                android:fontFamily="@font/inter"
+                android:text="Create new contact"
+                android:textColor="@color/blue_them"
+                android:textSize="16dp" />
+
+        </RelativeLayout>
+
+
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/icon_addPerson"
-            android:layout_marginTop="30dp"
-            android:paddingBottom="7dp"
+            android:layout_below="@id/addContact"
+            android:layout_marginTop="15dp"
             android:clipToPadding="false"
             android:paddingTop="5dp"
+            android:paddingBottom="7dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/list_item_contacts" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_dialpad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:onClick="Call"
             android:layout_alignParentBottom="true"
             android:layout_margin="26dp"
             android:backgroundTint="@color/blue_them"
