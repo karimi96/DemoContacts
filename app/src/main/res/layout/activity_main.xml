@@ -61,19 +61,24 @@
         </RelativeLayout>
 
 
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/addContact"
             android:layout_marginTop="15dp"
-            android:clipToPadding="false"
-            android:paddingTop="5dp"
-            android:paddingBottom="7dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/list_item_contacts" />
+            android:layout_below="@id/addContact"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingTop="5dp"
+                android:paddingBottom="7dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/list_item_contacts" />
+
+    </androidx.core.widget.NestedScrollView>
+
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
