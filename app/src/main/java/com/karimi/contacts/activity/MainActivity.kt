@@ -1,12 +1,18 @@
 package com.karimi.contacts.activity
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.telephony.SmsManager
+import android.text.TextUtils
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.karimi.contacts.adapter.ContactAdapter
 import com.karimi.contacts.databinding.ActivityMainBinding
@@ -24,6 +30,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var listAlfabet : ArrayList<String>
     lateinit var position : ArrayList<Int>
     lateinit var contactAdapter : ContactAdapter
+
+    private val requestCall = 1
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +58,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
 
 
 
@@ -140,7 +152,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun initRecycler(){
-        contactAdapter = ContactAdapter(listContacts,this)
+        contactAdapter = ContactAdapter(listContacts,this , this)
         binding.recycler.adapter = contactAdapter
     }
 
@@ -184,6 +196,8 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "An error occurred", Toast.LENGTH_LONG)
                 .show()
         }
+
+
     }
 
 
@@ -193,6 +207,60 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
+
+
+     fun makePhoneCall() {
+        val number: String = "12222"
+        if (number.trim { it <= ' ' }.isNotEmpty()) {
+            if (ContextCompat.checkSelfPermission(
+                    this@MainActivity, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this@MainActivity, arrayOf(Manifest.permission.CALL_PHONE),
+                    requestCall
+                )
+            } else {
+                val dial = "tel:$number"
+                startActivity(Intent(Intent.ACTION_CALL, Uri.parse(dial)))
+            }
+        } else {
+            Toast.makeText(this@MainActivity, "Enter Phone Number", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == requestCall) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                makePhoneCall()
+            } else {
+                Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
+
+
+
+    fun myMessage() {
+        val myNumber = "11"
+        val myMsg = "hello"
+        if (myNumber == "" || myMsg == "") {
+            Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show()
+        } else {
+            if (TextUtils.isDigitsOnly(myNumber)) {
+                var phoneNumber="22222222"
+                val uri = Uri.parse("smsto:$phoneNumber")
+                startActivity(Intent(Intent.ACTION_SENDTO, uri))
+
+            } else {
+                Toast.makeText(this, "Please enter the correct number", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+    }
+
+
 
 
 

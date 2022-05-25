@@ -1,7 +1,9 @@
 package com.karimi.contacts.adapter
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.PackageManager
 import android.content.res.AssetManager
 import android.content.res.Resources
 import android.graphics.Color
@@ -14,17 +16,20 @@ import android.widget.*
 import android.widget.Filter.FilterResults
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.amulyakhare.textdrawable.TextDrawable
 import com.amulyakhare.textdrawable.util.ColorGenerator
 import com.karimi.contacts.R
+import com.karimi.contacts.activity.MainActivity
 import com.karimi.contacts.databinding.ListItemContactsBinding
 import com.karimi.contacts.model.User
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ContactAdapter(var list: ArrayList<User>, var context: Context) :
+class ContactAdapter(var list: ArrayList<User>, var context: Context , var activity: MainActivity) :
     RecyclerView.Adapter<ContactAdapter.MyViewHolder>() , Filterable {
 
     var rawIndex : Int = -1
@@ -38,6 +43,9 @@ class ContactAdapter(var list: ArrayList<User>, var context: Context) :
     var ll: ArrayList<User> = ls
 
     var listColor = arrayOf(R.color.black)
+    var mainActivity : MainActivity = activity
+    val permissionRequest = 101
+
 
 
     inner class MyViewHolder(binding: ListItemContactsBinding) :
@@ -48,25 +56,49 @@ class ContactAdapter(var list: ArrayList<User>, var context: Context) :
         var linear: LinearLayout = binding.linearListItem
         var line: View = binding.line
         var box_cmi: ConstraintLayout = binding.boxCmi.constraintCmi
-
         var linear1: View = binding.mmmmmmmm
+        var call = binding.boxCmi.call
+        var message = binding.boxCmi.message
+        var info = binding.boxCmi.info
+
 
         init {
             itemView.setOnClickListener {
-                if (last_position == position){
+                if (last_position == position) {
                     if (rawIndex == -1) rawIndex = position
                     else rawIndex = -1
-                }else{
+                } else {
                     rawIndex = position
                 }
                 notifyItemChanged(last_position)
                 last_position = position
                 notifyItemChanged(position)
-                Toast.makeText(context, rawIndex.toString() , Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, rawIndex.toString(), Toast.LENGTH_SHORT).show()
+            }
+
+
+            call.setOnClickListener(View.OnClickListener {
+                mainActivity.makePhoneCall()
+            })
+
+            message.setOnClickListener {
+                val permissionCheck =
+                    ContextCompat.checkSelfPermission(context, Manifest.permission.SEND_SMS)
+                if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+                    mainActivity.myMessage()
+                } else {
+                    ActivityCompat.requestPermissions(
+                        mainActivity, arrayOf(Manifest.permission.SEND_SMS),
+                        permissionRequest
+                    )
+                }
             }
 
         }
-    }
+
+
+
+        }
 
 
 
@@ -76,6 +108,7 @@ class ContactAdapter(var list: ArrayList<User>, var context: Context) :
             DataBindingUtil.inflate(layoutInflater, R.layout.list_item_contacts, parent, false)
         return MyViewHolder(binding)
     }
+
 
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -195,6 +228,16 @@ class ContactAdapter(var list: ArrayList<User>, var context: Context) :
             i++
         }
     }
+
+
+
+
+
+
+
+
+
+
 
 
 
