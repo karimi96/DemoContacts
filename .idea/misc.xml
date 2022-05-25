@@ -8,10 +8,12 @@
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/drawable/background_searchview.xml" value="0.2203125" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/drawable/border_save.xml" value="0.2203125" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/drawable/call_icon.xml" value="0.2203125" />
+        <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/drawable/edit_icon.xml" value="0.2203125" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/drawable/icon_close.xml" value="0.2203125" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/drawable/icon_photo.xml" value="0.2203125" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/font/dd.xml" value="0.11481481481481481" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/layout/activity_create_contact.xml" value="0.25" />
+        <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/layout/activity_detaile_contact.xml" value="0.5" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/layout/box_add_pic.xml" value="0.33" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/layout/box_cmi.xml" value="0.25" />
@@ -20,6 +22,7 @@
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/layout/list_item_contacts.xml" value="0.3202247191011236" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/layout/list_item_text_input_layout.xml" value="0.33" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/layout/test.xml" value="0.67" />
+        <entry key="..\:/new/Root/AndroidStudio/Demo Project/Contacts/app/src/main/res/menu/menu.xml" value="0.67" />
         <entry key="..\:/new/Root/AndroidStudio/Demo Project/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
       </map>
     </option>

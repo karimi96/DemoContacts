@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import com.karimi.contacts.R
 import com.karimi.contacts.adapter.AddPhoneBoxAdapter
 import com.karimi.contacts.databinding.ActivityCreateContactBinding
+import com.karimi.contacts.model.Phone
+import java.util.ArrayList as ArrayList1
 
 class CreateContactActivity : AppCompatActivity() {
     lateinit var binding: ActivityCreateContactBinding
@@ -26,19 +28,49 @@ class CreateContactActivity : AppCompatActivity() {
             setRecycler()
         }
 
-        binding.box1.imgClose.setOnClickListener { finish() }
+        close()
+
 
 
     }
 
     private fun setRecycler() {
-        adapter = AddPhoneBoxAdapter(count, this)
+        var list : ArrayList<Phone> = ArrayList()
+        list.add(0, Phone("home"))
+        list.add(1, Phone("work"))
+        var i = 0
+        while (i<count){
+            list.add(Phone("other"))
+            i++
+        }
+//        list.add("home")
+//        list.add("work")
+//        list.add("other")
+        adapter = AddPhoneBoxAdapter(count, this , list)
         binding.boxName.recyclerAddUser.adapter = adapter
     }
 
-//    fun close(){
-//        this.finish()
-//    }
+    private fun close(){
+        binding.box1.imgClose.setOnClickListener { finish() }
+    }
+
+
+    private fun save(){
+        binding.box1.save
+        var firstName = binding.boxName.etFirstName
+        var lastName = binding.boxName.etLastName
+        var phone = binding.boxName.etPhone
+        var email = binding.boxName.etEmail
+    }
+
+
+    private fun addPicture(){
+        binding.boxAddPicture.fabAddPic
+    }
+
+
+
+
 
 
 }

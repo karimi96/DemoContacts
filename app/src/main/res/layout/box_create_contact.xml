@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/img_close"
-        android:onClick="close"
+        android:background="?attr/actionBarItemBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -28,6 +28,7 @@
         android:textSize="20dp" />
 
     <TextView
+        android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_alignParentEnd="true"

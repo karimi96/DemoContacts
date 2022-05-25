@@ -24,7 +24,9 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <include layout="@layout/box_add_pic" />
+                <include
+                    android:id="@+id/box_add_picture"
+                    layout="@layout/box_add_pic" />
 
                 <include
                     android:id="@+id/box_name"
